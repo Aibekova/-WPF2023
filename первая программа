@@ -1,0 +1,35 @@
+using System;
+using System.IO;//работа с файлом
+class Program {
+  public static void Main (string[] args) {  
+    //Спрашиваем размер массива
+    Console.WriteLine("Введите число элементов массива: ");
+int size = int.Parse(Console.ReadLine());   
+    int[] A1 = new int[size];
+    //Заполняем рандомными числами
+    Random rand = new Random();
+    for(int i=0; i<A1.Length; i++){
+      A1[i]=rand.Next();
+    }
+    //выведение самого массива
+ Console.WriteLine("Массив A1: ");
+    for(int i=0; i< A1.Length; i++){
+      Console.Write(A1[i] + " / ");
+      }
+    Console.WriteLine("Сортировка по возрастанию: "); 
+    Array.Sort(A1);
+    for (int i=0; i<A1.Length;i++){
+      Console.Write(A1[i] + "\t");
+      }
+    Console.WriteLine("Сортировка по убыванию: ");
+    Array.Reverse(A1);
+    for(int i=0;i<A1.Length;i++){
+      Console.Write(A1[i] + "\t");
+    }
+//запись массива в файл
+    StreamWriter sw = new StreamWriter(@"C:\text.txt");
+    sw.WriteLine("Aibekova");
+    sw.WriteLine (string.Join(",",A1));
+    sw.Close();
+    }
+  }
